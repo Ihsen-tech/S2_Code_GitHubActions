@@ -21,11 +21,11 @@ jobs:
           - name: Azure Login
             uses: azure/login@v1
             with:
-            creds: ${{ secrets.AZURE_CREDENTIALS }}
+              creds: ${{ secrets.AZURE_CREDENTIALS }}
     
           - name: Azure CLI script
             uses: azure/CLI@v1
             with:
-            inlineScript: |
-              az appservice plan create -g ${{ secrets.RG }} -n ${{ secrets.ASP }} --is-linux --number-of-workers 1 --sku B1 --location ${{ secrets.LOC }}
-              az webapp create -g ${{ secrets.RG }} -p ${{ secrets.ASP }} -n ${{ secrets.WEBAPP }}  --runtime "node:20-lts"
+              inlineScript: |
+                az appservice plan create -g ${{ secrets.RG }} -n ${{ secrets.ASP }} --is-linux --number-of-workers 1 --sku B1 --location ${{ secrets.LOC }}
+                az webapp create -g ${{ secrets.RG }} -p ${{ secrets.ASP }} -n ${{ secrets.WEBAPP }}  --runtime "node:20-lts"
